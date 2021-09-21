@@ -72,6 +72,11 @@ def getAllUsers():
     results = users_schema.dump(users)
     return jsonify(results)
 
+@app.route("/api/users/<id>", methods = ["GET"])
+def getUserById(id):
+    user = Users.query.get(id)
+    return user_schema.jsonify(user)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
