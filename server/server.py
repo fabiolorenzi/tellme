@@ -1,4 +1,4 @@
-from flask import Flask, require, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
