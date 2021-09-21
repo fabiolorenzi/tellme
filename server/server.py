@@ -25,7 +25,7 @@ class Users(db.Model):
     subscribed_since = db.Column(db.Date)
     city = db.Column(db.String(30))
     email = db.Column(db.String(40))
-    password = db.Column(db.String(20))
+    password = db.Column(db.String(10000))
 
     def __init__(self, username, name, surname, birthday, subscribed_since, city, email, password):
         self.username = username
@@ -84,12 +84,17 @@ def getUserById(id):
     user = Users.query.get(id)
     return user_schema.jsonify(user)
 
-@app.route("/api/users/<id>/<passW>", methods = ["GET"])
-def loginUser(id, passW):
+@app.route("/api/users/<id>/check", methods = ["GET"])
+def loginUser(id):
     user = Users.query.get(id)
+    passW = request.json["passW"]
     bytePssw = bytes(user.password, encoding="utf-8")
     password = f.decrypt(bytePssw)
-    return password
+    passWEn = passW.encode()
+    if password == passWEn:
+        return "equal"
+    else:
+        return "not equal"
 
 @app.route("/api/users", methods = ["POST"])
 def addUser():
