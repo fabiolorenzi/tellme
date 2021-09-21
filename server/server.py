@@ -64,6 +64,13 @@ class PostSchema(ma.Schema):
 post_schema = PostSchema()
 posts_schema = PostSchema(many=True)
 
+#-------------------------SECURITY-------------------------
+
+file = open("key.key", "rb")
+key = file.read()
+file.close()
+f = Fernet(key)
+
 #-------------------------ROUTES-------------------------
 
 @app.route("/api/users", methods = ["GET"])
@@ -76,6 +83,25 @@ def getAllUsers():
 def getUserById(id):
     user = Users.query.get(id)
     return user_schema.jsonify(user)
+
+@app.route("/api/users", methods = ["POST"])
+def addUser():
+    username = request.json["username"]
+    name = request.json["name"]
+    surname = request.json["surname"]
+    birthday = request.json["birthday"]
+    subscribed_since = datetime.now()
+    city = request.json["city"]
+    email = request.json["email"]
+    prePassword = request.json["password"]
+
+    bytePassword = prePassword.encode()
+    password = f.encrypt(bytePassword)
+
+    users = Users(username, name, surname, birthday, subscribed_since, city, email, password)
+    db.session.add(users)
+    db.session.commit()
+    return user_schema.jsonify(users)
 
 #-------------------------END-------------------------
 
