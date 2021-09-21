@@ -115,6 +115,33 @@ def addUser():
     db.session.commit()
     return user_schema.jsonify(users)
 
+@app.route("/api/users/<id>", methods = ["PUT"])
+def updateUser(id):
+    user = Users.query.get(id)
+
+    username = request.json["username"]
+    name = request.json["name"]
+    surname = request.json["surname"]
+    birthday = request.json["birthday"]
+    city = request.json["city"]
+    email = request.json["email"]
+    prePassword = request.json["password"]
+
+    bytePassword = prePassword.encode()
+    password = f.encrypt(bytePassword)
+
+    user.username = username or user.username
+    user.name = name or user.name
+    user.surname = surname or user.surname
+    user.birthday = birthday or user.birthday
+    user.city = city or user.city
+    user.email = email or user.email
+    user.subscribed_since = user.subscribed_since
+    user.password = password or user.password
+
+    db.session.commit()
+    return user_schema.jsonify(user)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
