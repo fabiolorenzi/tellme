@@ -52,6 +52,18 @@ class Posts(db.Model):
     date = db.Column(db.Date)
     message = db.Column(db.String(1000))
 
+    def __init__(self, user, date, message):
+        self.user = user
+        self.date = date
+        self.message = message
+
+class PostSchema(ma.Schema):
+    class Meta:
+        fields = ("id", "user", "date", "message")
+
+post_schema = PostSchema()
+posts_schema = PostSchema(many=True)
+
 #-------------------------ROUTES-------------------------
 
 #-------------------------END-------------------------
