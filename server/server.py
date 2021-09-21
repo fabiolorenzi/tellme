@@ -47,7 +47,7 @@ users_schema = UserSchema(many=True)
 
 
 class Posts(db.Model):
-    id = db.Column(db.Intenger, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     user = db.Column(db.String(25))
     date = db.Column(db.Date)
     message = db.Column(db.String(1000))
