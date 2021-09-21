@@ -66,6 +66,12 @@ posts_schema = PostSchema(many=True)
 
 #-------------------------ROUTES-------------------------
 
+@app.route("/api/users", methods = ["GET"])
+def getAllUsers():
+    users = Users.query.all()
+    results = users_schema.dump(users)
+    return jsonify(results)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
