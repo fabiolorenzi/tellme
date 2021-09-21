@@ -88,9 +88,9 @@ def getUserById(id):
 def loginUser(id):
     user = Users.query.get(id)
     passW = request.json["passW"]
-    bytePssw = bytes(user.password, encoding="utf-8")
+    bytePssw = bytes(user.password, encoding="utf-8") # To convert the token in bytes
     password = f.decrypt(bytePssw)
-    passWEn = passW.encode()
+    passWEn = passW.encode() # To compare the password and the token, you must convert both in bytes
     if password == passWEn:
         return "equal"
     else:
