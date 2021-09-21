@@ -84,6 +84,13 @@ def getUserById(id):
     user = Users.query.get(id)
     return user_schema.jsonify(user)
 
+@app.route("/api/users/<id>/<passW>", methods = ["GET"])
+def loginUser(id, passW):
+    user = Users.query.get(id)
+    bytePssw = bytes(user.password, encoding="utf-8")
+    password = f.decrypt(bytePssw)
+    return password
+
 @app.route("/api/users", methods = ["POST"])
 def addUser():
     username = request.json["username"]
