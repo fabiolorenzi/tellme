@@ -1,0 +1,12 @@
+@import "../../shared/var.scss";
+
+.imageSideContainer {
+    display: inline-block;
+    width: 280px;
+    margin-top: 7px;
+    img {
+        display: block;
+        margin: auto;
+        width: 50px;
+    }
+}
