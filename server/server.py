@@ -183,6 +183,13 @@ def updatePost(id):
     db.session.commit()
     return post_schema.jsonify(post)
 
+@app.route("/api/posts/<id>", methods = ["DELETE"])
+def deletePost(id):
+    post = Posts.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+    return "Post removed successfully"
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
