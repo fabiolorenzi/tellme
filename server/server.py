@@ -149,6 +149,12 @@ def deleteUser(id):
     db.session.commit()
     return user_schema.jsonify(user)
 
+@app.route("/api/posts", methods = ["GET"])
+def getAllPosts():
+    posts = Posts.query.all()
+    result = posts_schema.dump(posts)
+    return jsonify(result)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
