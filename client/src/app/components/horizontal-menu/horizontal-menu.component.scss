@@ -1,0 +1,26 @@
+@import "../../shared/var.scss";
+
+.horizontalMenuContainer {
+    display: inline-block;
+    vertical-align: middle !important;
+    width: 80%;
+    .menu {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        width: 80%;
+        a {
+            display: block;
+            color: $white;
+            text-decoration: none;
+            font-weight: 500;
+            color: $white;
+            transition-duration: 0.3s;
+        }
+    }
+}
+
+.active {
+    transition-duration: 0.3s;
+    color: $lightGreen;
+}
