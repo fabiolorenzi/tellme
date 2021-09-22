@@ -160,6 +160,17 @@ def getPostById(id):
     post = Posts.query.get(id)
     return post_schema.jsonify(post)
 
+@app.route("/api/posts", methods = ["POST"])
+def addPost():
+    user = request.json["user"]
+    date = datetime.now()
+    message = request.json["message"]
+
+    post = Posts(user, date, message)
+    db.session.add(post)
+    db.session.commit()
+    return post_schema.jsonify(post)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
