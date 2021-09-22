@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './containers/header/header.component';
 import { ImageSideComponent } from './components/image-side/image-side.component';
 import { HorizontalMenuComponent } from './components/horizontal-menu/horizontal-menu.component';
+import { HomeComponent } from './containers/home/home.component';
 
 const appRoutes: Routes = [];
 
@@ -16,7 +17,8 @@ const appRoutes: Routes = [];
     AppComponent,
     HeaderComponent,
     ImageSideComponent,
-    HorizontalMenuComponent
+    HorizontalMenuComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
