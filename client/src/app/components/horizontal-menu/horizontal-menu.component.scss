@@ -17,10 +17,13 @@
             color: $white;
             transition-duration: 0.3s;
         }
+        a:hover {
+            transition-duration: 0.3s;
+            color: $lightGreen;
+        }
     }
 }
 
 .active {
-    transition-duration: 0.3s;
-    color: $lightGreen;
+    color: $lightGreen !important;
 }

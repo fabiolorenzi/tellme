@@ -10,7 +10,9 @@ import { ImageSideComponent } from './components/image-side/image-side.component
 import { HorizontalMenuComponent } from './components/horizontal-menu/horizontal-menu.component';
 import { HomeComponent } from './containers/home/home.component';
 
-const appRoutes: Routes = [];
+const appRoutes: Routes = [
+  {path: "", component: HomeComponent}
+];
 
 @NgModule({
   declarations: [
