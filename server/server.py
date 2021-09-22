@@ -155,6 +155,11 @@ def getAllPosts():
     result = posts_schema.dump(posts)
     return jsonify(result)
 
+@app.route("/api/posts/<id>", methods = ["GET"])
+def getPostById(id):
+    post = Posts.query.get(id)
+    return post_schema.jsonify(post)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
