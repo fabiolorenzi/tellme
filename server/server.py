@@ -113,7 +113,7 @@ def addUser():
     users = Users(username, name, surname, birthday, subscribed_since, city, email, password)
     db.session.add(users)
     db.session.commit()
-    return user_schema.jsonify(users)
+    return "User created successfully"
 
 @app.route("/api/users/<id>", methods = ["PUT"])
 def updateUser(id):
@@ -140,14 +140,14 @@ def updateUser(id):
     user.password = password or user.password
 
     db.session.commit()
-    return user_schema.jsonify(user)
+    return "User updated successfully"
 
 @app.route("/api/users/<id>", methods = ["DELETE"])
 def deleteUser(id):
     user = Users.query.get(id)
     db.session.delete(user)
     db.session.commit()
-    return user_schema.jsonify(user)
+    return "User removed successfully"
 
 @app.route("/api/posts", methods = ["GET"])
 def getAllPosts():
@@ -169,7 +169,7 @@ def addPost():
     post = Posts(user, date, message)
     db.session.add(post)
     db.session.commit()
-    return post_schema.jsonify(post)
+    return "Post created successfully"
 
 @app.route("/api/posts/<id>", methods = ["PUT"])
 def updatePost(id):
@@ -181,7 +181,7 @@ def updatePost(id):
     post.date = post.date
 
     db.session.commit()
-    return post_schema.jsonify(post)
+    return "Post modified successfully"
 
 @app.route("/api/posts/<id>", methods = ["DELETE"])
 def deletePost(id):
