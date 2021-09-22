@@ -6,13 +6,15 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './containers/header/header.component';
+import { ImageSideComponent } from './components/image-side/image-side.component';
 
 const appRoutes: Routes = [];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ImageSideComponent
   ],
   imports: [
     BrowserModule,
