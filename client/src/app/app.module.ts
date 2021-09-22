@@ -6,13 +6,15 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LeftPartComponent } from './components/left-part/left-part.component';
 
 const appRoutes: Routes = [];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    LeftPartComponent
   ],
   imports: [
     BrowserModule,
