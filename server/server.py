@@ -171,6 +171,18 @@ def addPost():
     db.session.commit()
     return post_schema.jsonify(post)
 
+@app.route("/api/posts/<id>", methods = ["PUT"])
+def updatePost(id):
+    post = Posts.query.get(id)
+
+    message = request.json["message"]
+    post.user = post.user
+    post.message = message or post.message
+    post.date = post.date
+
+    db.session.commit()
+    return post_schema.jsonify(post)
+
 #-------------------------END-------------------------
 
 if __name__ == "__main__":
